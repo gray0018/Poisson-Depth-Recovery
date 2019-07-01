@@ -85,6 +85,42 @@ if True:
     b.append(d[i][j])
     equation_num += 1
 
+    A_row.append(equation_num)
+    i = 25
+    j = 25
+    ind = (i - 1) * (l - 1) + j - 1
+    A_col.append(ind)
+    A_data.append(1)
+    b.append(d[i][j])
+    equation_num += 1
+
+    A_row.append(equation_num)
+    i = 75
+    j = 75
+    ind = (i - 1) * (l - 1) + j - 1
+    A_col.append(ind)
+    A_data.append(1)
+    b.append(d[i][j])
+    equation_num += 1
+
+    A_row.append(equation_num)
+    i = 25
+    j = 75
+    ind = (i - 1) * (l - 1) + j - 1
+    A_col.append(ind)
+    A_data.append(1)
+    b.append(d[i][j])
+    equation_num += 1
+
+    A_row.append(equation_num)
+    i = 75
+    j = 25
+    ind = (i - 1) * (l - 1) + j - 1
+    A_col.append(ind)
+    A_data.append(1)
+    b.append(d[i][j])
+    equation_num += 1
+
     # 解方程
     if True:
         A_row = np.array(A_row)
@@ -109,7 +145,7 @@ if True:
 
         # res = lin.cg(A, b)[0]
         # res = lin.bicg(A, b)[0]
-        tol = 1e-15
+        tol = 1e-13
         res = lin.lsqr(A, b, atol=tol, btol=tol, conlim=1/tol)[0]
         # res = lin.bicgstab(A, b)[0]
 
@@ -129,6 +165,6 @@ if True:
     # show(d)
 
     zzz = np.load("square_100_100_depth.npy")
-
-    show(abs(d-zzz))
+    zzz = abs(d-zzz)
+    show(zzz)
 
