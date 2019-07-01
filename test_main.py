@@ -5,7 +5,6 @@ from scipy import sparse
 from sklearn.preprocessing import normalize
 
 
-
 def show(pic, color="gray", name="Picture", fontdict={'fontsize': 27}):
 
     plt.figure(figsize=(10,10))
@@ -16,8 +15,6 @@ def show(pic, color="gray", name="Picture", fontdict={'fontsize': 27}):
     fig.axes.get_yaxis().set_visible(False)
 
     plt.show()
-
-
 
 
 if False:
@@ -76,13 +73,25 @@ if True:
                     A_col.append(ind+1)
                     A_data.append(-1)
 
+    equation_num = len(b)
+    variable_num = len(b)
+
+    A_row.append(equation_num)
+    i = 50
+    j = 50
+    ind = (i-1)*(l-1)+j-1
+    A_col.append(ind)
+    A_data.append(1)
+    b.append(d[i][j])
+    equation_num += 1
+
     # 解方程
     if True:
         A_row = np.array(A_row)
         A_col = np.array(A_col)
         A_data = np.array(A_data)
         b = np.array(b)
-        A = sparse.csr_matrix((A_data, (A_row, A_col)), shape=(b.shape[0], b.shape[0]))
+        A = sparse.csr_matrix((A_data, (A_row, A_col)), shape=(equation_num, variable_num))
 
         # res = lin.inv(A)*b
 
@@ -100,7 +109,7 @@ if True:
 
         # res = lin.cg(A, b)[0]
         # res = lin.bicg(A, b)[0]
-        tol = 1e-13
+        tol = 1e-15
         res = lin.lsqr(A, b, atol=tol, btol=tol, conlim=1/tol)[0]
         # res = lin.bicgstab(A, b)[0]
 
@@ -117,7 +126,7 @@ if True:
             ind = (i - 1) * (l - 1) + j - 1
             d[i][j] = res[ind]
 
-    show(d)
+    # show(d)
 
     zzz = np.load("square_100_100_depth.npy")
 
