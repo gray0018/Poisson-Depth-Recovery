@@ -6,37 +6,6 @@ from scipy import sparse
 from scipy.sparse.linalg import cg
 # from scipy.sparse.linalg import spsolve
 
-def normalize_normal_map(N):
-    """
-    N is a unnormalized normal map of shape H_W_3. Normalize N across the third dimension.
-    :param N:
-    :return:
-    """
-    H, W, C = N.shape
-    N = np.reshape(N, (-1, C))
-    N = normalize(N, axis=1)
-    N = np.reshape(N, (H, W, C))
-    return N
-
-def show(pic, color="gray", name="Picture", fontdict={'fontsize': 27}):
-
-    plt.figure(figsize=(10,10))
-    fig = plt.subplot(1,1,1)
-    fig.imshow(pic, color)
-    fig.set_title(name, fontdict)
-    fig.axes.get_xaxis().set_visible(False)
-    fig.axes.get_yaxis().set_visible(False)
-
-    plt.show()
-
-
-
-# mask = np.load("mask.npy")
-# rand_mask = np.load("known_depth_coordinate_form_001.npy")
-# mask[(rand_mask[0], rand_mask[1])] = 0
-#
-# show(mask)
-#
 
 d = np.load("depth.npy")
 n = np.load("normal.npy")
