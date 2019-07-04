@@ -1,2 +1,4 @@
 .ipynb_checkpoints
 .idea
+*.npy
+__pycache__
