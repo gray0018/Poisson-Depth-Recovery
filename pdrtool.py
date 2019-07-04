@@ -1,15 +1,14 @@
 from __future__ import division, print_function, absolute_import
 
 
-from numpy import zeros, save, uint8, reshape
-from numpy.random import randint
+from numpy import zeros, save, reshape
 
 from sklearn.preprocessing import normalize
 
-from matplotlib.pyplot import figure, subplot, show
+from matplotlib.pyplot import figure, subplot, show, savefig
 
 
-def pdr_show(pic, color="gray", name="Picture", fontdict={'fontsize': 27}):
+def pdr_show(pic, color="gray", name="Picture", fontdict={'fontsize': 27}, save = False):
 
     figure(figsize=(10,10))
     fig = subplot(1,1,1)
@@ -17,6 +16,8 @@ def pdr_show(pic, color="gray", name="Picture", fontdict={'fontsize': 27}):
     fig.set_title(name, fontdict)
     fig.axes.get_xaxis().set_visible(False)
     fig.axes.get_yaxis().set_visible(False)
+    if save:
+        savefig(name)
 
     show()
 
