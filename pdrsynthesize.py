@@ -15,8 +15,8 @@ l = clip_size
 
 a = d[c-l:c+l+1, c-l:c+l+1]
 b = n[c-l:c+l+1, c-l:c+l+1]
-b[:,:,0] /= b[:,:,2]
-b[:,:,1] /= b[:,:,2]
+b[:, :, 0] /= b[:, :, 2]
+b[:, :, 1] /= b[:, :, 2]
 
 save("square_100_100_depth", a)
 save("square_100_100_normal", b)
