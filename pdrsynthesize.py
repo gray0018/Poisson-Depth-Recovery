@@ -4,7 +4,8 @@ from numpy import load, save
 pdr_synthesize(1024, 500, 0.01)
 
 d = load("depth.npy")
-n = pdr_normalize_normal_map(load("normal.npy"))
+# n = pdr_normalize_normal_map(load("normal.npy"))
+n = load("normal.npy")
 
 center = d.shape[0]//2
 c = center
@@ -20,6 +21,5 @@ b[:, :, 1] /= b[:, :, 2]
 
 save("square_100_100_depth", a)
 save("square_100_100_normal", b)
-
 
 pdr_show(a)
