@@ -222,7 +222,7 @@ if True:
                 A_row.append(ind)
                 A_col.append(ind + l)
                 A_data.append(1)
-                np3 =  (n[i][j][1] + n[i + 1][j][0]) / 2
+                np3 =  (n[i][j][0] + n[i + 1][j][0]) / 2
 
                 b.append(np1 + np2 + np3)
             else:
@@ -386,5 +386,5 @@ for i in range(0, l):
 zzz = np.load("square_100_100_depth.npy")
 zzz = abs(d - zzz)
 pdr_show(zzz)
-pdr_show(d)
+# pdr_show(d)
 
