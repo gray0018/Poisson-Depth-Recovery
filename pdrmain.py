@@ -25,8 +25,9 @@ if True:
             A_data.append(4)
 
             laplacian = 4 * d[i][j] - d[i - 1][j] - d[i + 1][j] - d[i][j - 1] - d[i][j + 1]
-            div = (n[i + 1][j][0] - n[i - 1][j][0] + n[i][j + 1][1] - n[i][j - 1][1]) / 2
+            div = -(n[i + 1][j][0] - n[i - 1][j][0] + n[i][j + 1][1] - n[i][j - 1][1]) / 2
             b.append(div)
+            error_tmp = abs(laplacian - div)
 
             if i - 1 == 0:  # up
                 b[-1] += d[i - 1][j]
@@ -117,7 +118,7 @@ if True:
 
     # here choose method to solve the equation, default use lsqr with tol=10^-13
     if True:
-        tol = 1e-13
+        tol = 1e-15
         res = lin.lsqr(A, b, atol=tol, btol=tol, conlim=1 / tol)[0]
 
         # res = lin.inv(A)*b
@@ -152,4 +153,5 @@ for i in range(1, l):
 zzz = np.load("square_100_100_depth.npy")
 zzz = abs(d - zzz)
 pdr_show(zzz)
+pdr_show(d)
 
