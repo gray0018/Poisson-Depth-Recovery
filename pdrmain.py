@@ -236,11 +236,11 @@ if True:
                 error_tmp = abs(laplacian - div)
 
                 A_row.append(ind)
-                A_col.append(ind - (l - 1))
+                A_col.append(ind - l)
                 A_data.append(1)
 
                 A_row.append(ind)
-                A_col.append(ind + (l - 1))
+                A_col.append(ind + l)
                 A_data.append(1)
 
                 A_row.append(ind)
@@ -254,61 +254,12 @@ if True:
     equation_num = len(b)
     variable_num = len(b)
 
-
-A_row.append(equation_num)
-i = 50
-j = 50
-ind = i*l+j
-A_col.append(ind)
-A_data.append(1)
-b.append(d[i][j])
-equation_num += 1
-
-
-
 # add known depth, by default, no just use normal
-if False:
-
+if True:
     A_row.append(equation_num)
-    i = 40
-    j = 40
-    ind = i*l+j
-    A_col.append(ind)
-    A_data.append(1)
-    b.append(d[i][j])
-    equation_num += 1
-
-    A_row.append(equation_num)
-    i = 10
-    j = 10
-    ind = i*l+j
-    A_col.append(ind)
-    A_data.append(1)
-    b.append(d[i][j])
-    equation_num += 1
-
-    A_row.append(equation_num)
-    i = 30
-    j = 30
-    ind = i*l+j
-    A_col.append(ind)
-    A_data.append(1)
-    b.append(d[i][j])
-    equation_num += 1
-
-    A_row.append(equation_num)
-    i = 10
-    j = 30
-    ind = i*l+j
-    A_col.append(ind)
-    A_data.append(1)
-    b.append(d[i][j])
-    equation_num += 1
-
-    A_row.append(equation_num)
-    i = 30
-    j = 10
-    ind = i*l+j
+    i = 50
+    j = 50
+    ind = i * l + j
     A_col.append(ind)
     A_data.append(1)
     b.append(d[i][j])
@@ -324,8 +275,8 @@ if False:
     equation_num += 1
 
     A_row.append(equation_num)
-    i = 15
-    j = 15
+    i = 75
+    j = 75
     ind = i * l + j
     A_col.append(ind)
     A_data.append(1)
@@ -333,8 +284,17 @@ if False:
     equation_num += 1
 
     A_row.append(equation_num)
-    i = 35
-    j = 35
+    i = 75
+    j = 25
+    ind = i * l + j
+    A_col.append(ind)
+    A_data.append(1)
+    b.append(d[i][j])
+    equation_num += 1
+
+    A_row.append(equation_num)
+    i = 25
+    j = 75
     ind = i * l + j
     A_col.append(ind)
     A_data.append(1)
@@ -351,7 +311,7 @@ if True:
 
     # here choose method to solve the equation, default use lsqr with tol=10^-13
     if True:
-        tol = 1e-13
+        tol = 1e-15
         res = lin.lsqr(A, b, atol=tol, btol=tol, conlim=1 / tol)[0]
 
         # res = lin.inv(A)*b
@@ -385,6 +345,6 @@ for i in range(0, l):
 
 zzz = np.load("square_100_100_depth.npy")
 zzz = abs(d - zzz)
-pdr_show(zzz)
-# pdr_show(d)
-
+# pdr_show(zzz)
+pdr_show(d)
+# np.save("1point", d)
