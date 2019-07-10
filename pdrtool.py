@@ -35,9 +35,8 @@ def pdr_normalize_normal_map(N):
     return N
 
 
-def pdr_synthesize(pic_size=256, r=120, per=0.01):
+def pdr_synthesize(pic_size=256, r=120):
     l = pic_size
-    per = int(1/per)
     if 2*r > l:
         raise Exception("r is out of range")
 
