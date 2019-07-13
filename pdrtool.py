@@ -10,8 +10,8 @@ from matplotlib.pyplot import figure, subplot, show, savefig
 
 def pdr_show(pic, color="gray", name="Picture", fontdict={'fontsize': 27}, save = False):
 
-    figure(figsize=(10,10))
-    fig = subplot(1,1,1)
+    figure(figsize=(10, 10))
+    fig = subplot(1, 1, 1)
     fig.imshow(pic, color)
     fig.set_title(name, fontdict)
     fig.axes.get_xaxis().set_visible(False)
