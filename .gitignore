@@ -1,5 +1,6 @@
 .ipynb_checkpoints
 .idea
+.exr
 *.npy
 *.png
 __pycache__
