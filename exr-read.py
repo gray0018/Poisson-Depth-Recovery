@@ -26,21 +26,14 @@ for channel_name in f.header()["channels"]:
     split_channel(f, channel_name)
     channels[channel_name] = split_channel(f, channel_name)
 
-# pic = np.concatenate((channels["shNormal.B"][:, :, None], channels["shNormal.G"][:, :, None], channels["shNormal.R"][:, :, None]), axis=-1)
-# cv2.imshow(None, pic/2+.5)
-# cv2.waitKey()
-# cv2.destroyAllWindows()
-#
-
 normal = np.concatenate((channels["shNormal.R"][:, :, None], channels["shNormal.G"][:, :, None], channels["shNormal.B"][:, :, None]), axis=-1)
 fig1 = plt.subplot(1, 2, 1)
 fig1 = plt.imshow(normal/2+.5)
 fig1.axes.get_xaxis().set_visible(False)
 fig1.axes.get_yaxis().set_visible(False)
-
 depth = channels["distance.Y"]
 fig2 = plt.subplot(1, 2, 2)
-fig2 = plt.imshow(depth)
+fig2 = plt.imshow(depth, "gray")
 fig2.axes.get_xaxis().set_visible(False)
 fig2.axes.get_yaxis().set_visible(False)
 

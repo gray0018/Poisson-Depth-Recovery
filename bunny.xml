@@ -2,18 +2,8 @@
 <scene version="0.5.0">
 	
 	<integrator type="multichannel">
-			<integrator type="path"/>
 			<integrator type="field">
 				<string name="field" value="shNormal"/>
-			</integrator>
-			<integrator type="field">
-				<string name="field" value="geoNormal"/>
-			</integrator>
-			<integrator type="field">
-				<string name="field" value="position"/>
-			</integrator>
-			<integrator type="field">
-				<string name="field" value="relPosition"/>
 			</integrator>
 			<integrator type="field">
 				<string name="field" value="distance"/>
@@ -34,8 +24,8 @@
 			<lookat origin="0, 0, 2" target="0, 0, 0" up="0, 1, 0"/>
 		</transform>
 		<film type="hdrfilm">
-			<string name="pixelFormat" value="rgb, rgb,rgb,rgb,rgb,luminance"/>
-			<string name="channelNames" value="color, shNormal, geoNormal, position, relPosition, distance"/>
+			<string name="pixelFormat" value="rgb, luminance"/>
+			<string name="channelNames" value="shNormal, distance"/>
 			<string name="componentFormat" value="float32"/>
 		</film>
 	</sensor>
