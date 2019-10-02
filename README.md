@@ -37,6 +37,21 @@ Download this package and run the main.py:
 python main.py demo_name(sphere or bunny)
 ```
 
+## Dependencies
+Python 3.5.6
+- numpy==1.17.2
+- matplotlib==3.0.3
+- opencv-python==4.1.1.26
+- sparseqr==1.0.0
+- sklearn==0.0
+- scipy==1.3.1
+```
+apt-get install libsuitesparse-dev
+pip install -r requirements.txt
+pip install git+https://github.com/yig/PySPQR.git
+```
+
+
 ## Result
 <p align="center">
 <img src="pic/sphere_result.png" width="846">
