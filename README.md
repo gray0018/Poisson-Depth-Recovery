@@ -1,3 +1,5 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 # Poisson Depth Recovery
 
 ### What is Depth Recovery?
@@ -9,7 +11,7 @@ sparse depth map getting from depth sensor.
 Poisson Depth Recovery is recovering depth map by solving a Poisson Equation. The Equation
 comes from solving a functional.
 
-Find the depth funciton <img src="http://latex.codecogs.com/gif.latex?z"/>
+Find the depth funciton $z$
 whose gradient best approximates the surface normal (represented
 by <img src="http://latex.codecogs.com/gif.latex?p, q"/>). 
 
