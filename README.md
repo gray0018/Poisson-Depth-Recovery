@@ -38,17 +38,17 @@ python main.py demo_name(sphere or bunny)
 ```
 
 ## Dependencies
-Python 3.5.6
+Tested on Python 3.5.6, Ubuntu Linux. Use Python wrapper for SuiteSparseQR to solve Poisson Equation.
+You may check [SuiteSparseQR](https://github.com/yig/PySPQR) for detail.
 - numpy==1.17.2
 - matplotlib==3.0.3
 - opencv-python==4.1.1.26
-- sparseqr==1.0.0
 - sklearn==0.0
 - scipy==1.3.1
 ```
 apt-get install libsuitesparse-dev
-pip install -r requirements.txt
 pip install git+https://github.com/yig/PySPQR.git
+pip install -r requirements.txt
 ```
 
 
