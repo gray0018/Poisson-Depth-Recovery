@@ -1,7 +1,6 @@
 # Poisson Depth Recovery
 
 ### What is Depth Recovery?
-
 Depth Recovery is using additional cues such like normal map, RGB image to enhance the
 sparse depth map getting from depth sensor.
 
@@ -16,12 +15,33 @@ by <img src="http://latex.codecogs.com/gif.latex?p, q"/>).
 Equivalent to minimizing 
 <img src="http://latex.codecogs.com/gif.latex?f(x)"/>:
 
+<p align="center">
 <img src="http://latex.codecogs.com/gif.latex?f%28z%29%3D%5Ciint%28%28z_x-p%29%5E2&plus;%28z_y-q%29%5E2%29dxdy"/>
+</p>
 
 Euler-Lagrange equation for this functional is a Poisson equation:
 
+<p align="center">
 <img src="http://latex.codecogs.com/gif.latex?%5CDelta%20z%3Dp_x&plus;q_y"/>
+</p>
 
 <p align="center">
 <img src="pic/surface2depth.png" width="668">
+</p>
+
+
+## How to use?
+Download this package and run the main.py:
+
+```
+python main.py demo_name(sphere or bunny)
+```
+
+### Result
+<p align="center">
+<img src="pic/sphere_result.png" width="846">
+</p>
+
+<p align="center">
+<img src="pic/bunny_result.png" width="846">
 </p>
