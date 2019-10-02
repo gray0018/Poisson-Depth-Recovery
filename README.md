@@ -13,7 +13,7 @@ whose gradient best approximates the surface normal (represented
 by <img src="http://latex.codecogs.com/gif.latex?p, q"/>). 
 
 Equivalent to minimizing 
-<img src="http://latex.codecogs.com/gif.latex?f(x)"/>:
+<img src="http://latex.codecogs.com/gif.latex?f(z)"/>:
 
 <p align="center">
 <img src="http://latex.codecogs.com/gif.latex?f%28z%29%3D%5Ciint%28%28z_x-p%29%5E2&plus;%28z_y-q%29%5E2%29dxdy"/>
