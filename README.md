@@ -1,10 +1,10 @@
 # Poisson Depth Recovery
 
-### What is Depth Recovery?
+## What is Depth Recovery?
 Depth Recovery is using additional cues such like normal map, RGB image to enhance the
 sparse depth map getting from depth sensor.
 
-### What is Poisson Depth Recovery?
+## What is Poisson Depth Recovery?
 Poisson Depth Recovery is recovering depth map by solving a Poisson Equation. The Equation
 comes from solving a functional.
 
@@ -37,7 +37,7 @@ Download this package and run the main.py:
 python main.py demo_name(sphere or bunny)
 ```
 
-### Result
+## Result
 <p align="center">
 <img src="pic/sphere_result.png" width="846">
 </p>
