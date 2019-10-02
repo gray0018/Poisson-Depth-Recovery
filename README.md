@@ -32,10 +32,10 @@ Euler-Lagrange equation for this functional is a Poisson equation:
 
 ## How to use?
 Download this package and run the main.py:
-
 ```
 python main.py demo_name(sphere or bunny)
 ```
+The Poisson solver is in `./lib/poisson.py`
 
 ## Dependencies
 Tested on Python 3.5.6, Ubuntu Linux. Use Python wrapper for SuiteSparseQR to solve Poisson Equation.
