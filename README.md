@@ -23,5 +23,5 @@ Euler-Lagrange equation for this functional is a Poisson equation:
 <img src="http://latex.codecogs.com/gif.latex?%5CDelta%20z%3Dp_x&plus;q_y"/>
 
 <p align="center">
-<img src="pic/surface2depth.png" width="768">
+<img src="pic/surface2depth.png" width="668">
 </p>
