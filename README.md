@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 # Poisson Depth Recovery
 
 ### What is Depth Recovery?
@@ -27,3 +25,5 @@ Euler-Lagrange equation for this functional is a Poisson equation:
 <p align="center">
 <img src="pic/surface2depth.png" width="512">
 </p>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
