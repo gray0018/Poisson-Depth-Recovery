@@ -33,9 +33,13 @@ Euler-Lagrange equation for this functional is a Poisson equation:
 ## How to use?
 Download this package and run the main.py:
 ```
-python main.py demo_name(sphere or bunny)
+python main.py demo_name(sphere or bunny) projection_model(-o or -p)
 ```
-The Poisson solver is in `./lib/poisson.py`.
+The Poisson solver is in `./lib/poisson.py`. If you want to use your own data, you should normalize your normal map
+into <img src="http://latex.codecogs.com/gif.latex?(p, q, -1)"/> form. The normal map's coordinate should align with 
+the normal map in the README.
+
+`warning: now only support orthographic and weak-perspective projection, perspective projection is under debugging!`
 
 ## Dependencies
 Tested on Python 3.5.6, Ubuntu Linux. Use Python wrapper for SuiteSparseQR to solve Poisson Equation.
@@ -45,18 +49,14 @@ You may check [SuiteSparseQR](https://github.com/yig/PySPQR) for detail.
 - opencv-python==4.1.1.26
 - sklearn==0.0
 - scipy==1.3.1
+- sparseqr==1.0.0
 ```
 apt-get install libsuitesparse-dev
-pip install git+https://github.com/yig/PySPQR.git
 pip install -r requirements.txt
 ```
 
 
 ## Result
 <p align="center">
-<img src="pic/sphere_result.png" width="846">
-</p>
-
-<p align="center">
-<img src="pic/bunny_result.png" width="846">
+<img src="pic/result.png" width="1024">
 </p>
