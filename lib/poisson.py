@@ -21,7 +21,7 @@ class PoissonOperator(object):
 
         self.depth = np.zeros([h, w])
 
-        self.f_4neighbor = lambda x: np.array([x[1, 1], x[1, 2], x[0, 1], x[2, 1], x[1, 0]])
+        self.f_4neighbor = lambda x: np.array([x[1, 1], x[1, 0], x[2, 1], x[0, 1], x[1, 2]])
 
         # add depth_info and depth_weight for depth fusion
         self.depth_A = None

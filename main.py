@@ -70,7 +70,9 @@ def orthographic_bunny():
     depth_gt = np.load("data/bunny/bunny_depth.npy")
     mask = ~(depth_gt == 0)
     mask = erode_mask(erode_mask(mask))  # remove boundary
-    normal[..., -1][~mask] = 1
+    normal[..., 2] = -normal[..., 2]
+    normal[..., 2][~mask] = -1
+
     depth_gt = 10 - depth_gt  # subtract from 10, translate position to depth
 
     # add 10 depth info manually
@@ -109,7 +111,8 @@ def orthographic_sphere():
 
     mask = ~(depth_gt == 0)
     mask = erode_mask(erode_mask(mask))  # remove boundary
-    normal[..., -1][~mask] = 1
+    normal[..., 2] = -normal[..., 2]
+    normal[..., 2][~mask] = -1
 
     depth_gt = 10 - depth_gt  # subtract from 10, translate position to depth
 
@@ -142,7 +145,6 @@ def perspective_sphere():
 
     # align coordinate
     normal[..., 0] = -normal[..., 0]
-    normal[..., 2] = -normal[..., 2]
 
     normal[..., 0][~mask] = 0
     normal[..., 1][~mask] = 0
