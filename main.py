@@ -179,22 +179,50 @@ def perspective_sphere():
 def perspective_bunny():
     pass
 
+def read_camera(path):
+    camera = np.loadtxt(path)
+    if camera[2, 2] == 0:
+        # orthographic camera
+        Zc = camera[2, 3]
+
 
 if __name__ == '__main__':
 
-    if sys.argv[2] == "-o":
-        if sys.argv[1] == "bunny":
-            orthographic_bunny()
-        elif sys.argv[1] == "sphere":
-            orthographic_sphere()
-        else:
-            usage()
-    elif sys.argv[2] == "-p":
-        if sys.argv[1] == "bunny":
-            perspective_bunny()
-        elif sys.argv[1] == "sphere":
-            perspective_sphere()
-        else:
-            usage()
+    n = np.load("data/sphere/normal.npy")
+    n_mask = np.load("data/sphere/normal_mask.npy")
+    d = np.load("data/sphere/depth.npy")
+    d_mask = np.load("data/sphere/depth_mask.npy")
+    camera = np.loadtxt(path)
+    
+    d_gt = d.copy()
+    d_info=d.copy()
+    d_info[~d_mask] = 0
+
+    if camera[2, 2] == 0:
+        # orthographic camera
+        Zc = camera[2, 3]
+        p = -n[..., 0] / n[..., 2] / Zc
+        q = -n[..., 1] / n[..., 2] / Zc
+        batch = PoissonOperator(np.dstack([p, q]), n_mask.astype(np.int8), d_info, 0.1)
+        d_est = batch.run()
+
+        plt.figure()
+        plt.imshow(d_est, "gray")
+        plt.title("Estimated Depth Map")
+        plt.axis('off')
+        plt.colorbar()
+        plt.show()
     else:
-        usage()
+        # perspective camera
+        Zc = camera[2, 3]
+        p = -n[..., 0] / n[..., 2] / Zc
+        q = -n[..., 1] / n[..., 2] / Zc
+        batch = PoissonOperator(np.dstack([p, q]), n_mask.astype(np.int8), d_info, 0.1)
+        d_est = batch.run()
+
+        plt.figure()
+        plt.imshow(d_est, "gray")
+        plt.title("Estimated Depth Map")
+        plt.axis('off')
+        plt.colorbar()
+        plt.show()
