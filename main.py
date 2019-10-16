@@ -190,20 +190,21 @@ if __name__ == '__main__':
 
     n = np.load("data/sphere/normal.npy")
     n_mask = np.load("data/sphere/normal_mask.npy")
+    n[..., 2][~n_mask] = -1
+    
+
     d = np.load("data/sphere/depth.npy")
     d_mask = np.load("data/sphere/depth_mask.npy")
+    d[~d_mask] = 0
+
     camera = np.loadtxt(path)
-    
-    d_gt = d.copy()
-    d_info=d.copy()
-    d_info[~d_mask] = 0
 
     if camera[2, 2] == 0:
         # orthographic camera
         Zc = camera[2, 3]
         p = -n[..., 0] / n[..., 2] / Zc
         q = -n[..., 1] / n[..., 2] / Zc
-        batch = PoissonOperator(np.dstack([p, q]), n_mask.astype(np.int8), d_info, 0.1)
+        batch = PoissonOperator(np.dstack([p, q]), n_mask.astype(np.int8), d, 0.1)
         d_est = batch.run()
 
         plt.figure()
@@ -214,11 +215,21 @@ if __name__ == '__main__':
         plt.show()
     else:
         # perspective camera
-        Zc = camera[2, 3]
-        p = -n[..., 0] / n[..., 2] / Zc
-        q = -n[..., 1] / n[..., 2] / Zc
-        batch = PoissonOperator(np.dstack([p, q]), n_mask.astype(np.int8), d_info, 0.1)
-        d_est = batch.run()
+        fx = camera[0, 0]
+        fy = camera[1, 1]
+        px = camera[0, 2]
+        py = camera[1, 2]
+
+        x, y = np.meshgrid(np.arange(d.shape[1]), np.arange(d.shape[0]))
+        u = x - px
+        v = np.flipud(y) - py
+
+        p = -n[..., 0] / (u * n[..., 0] + v * n[..., 1] + fx * n[..., 2])
+        q = -n[..., 1] / (u * n[..., 0] + v * n[..., 1] + fy * n[..., 2])
+        d_ = np.log(d)
+
+        batch = PoissonOperator(np.dstack([p, q]), n_mask.astype(np.int8), d_, 0.1)
+        d_est = np.exp(test.run())
 
         plt.figure()
         plt.imshow(d_est, "gray")
