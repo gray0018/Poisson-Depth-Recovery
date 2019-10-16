@@ -29,7 +29,8 @@ def plot_result(depth_est, depth_gt):
 
 
 def usage():
-    print("usage: python main.py demo_name(sphere or bunny) projection_model(-o or -p)")
+    print("Orthographic example: python main.py -o normal.npy mask_normal.npy depth.npy mask_depth.npy camera.ini")
+    print("Projective example: python main.py -o normal.npy mask_normal.npy depth.npy mask_depth.npy camera.ini")
 
 
 def erode_mask(mask):
@@ -182,14 +183,14 @@ def perspective_bunny():
 
 if __name__ == '__main__':
 
-    if sys.argv[2] == "-o":
+    if sys.argv[1] == "-o":
         if sys.argv[1] == "bunny":
             orthographic_bunny()
         elif sys.argv[1] == "sphere":
             orthographic_sphere()
         else:
             usage()
-    elif sys.argv[2] == "-p":
+    elif sys.argv[1] == "-p":
         if sys.argv[1] == "bunny":
             perspective_bunny()
         elif sys.argv[1] == "sphere":
