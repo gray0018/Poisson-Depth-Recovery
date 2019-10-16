@@ -29,7 +29,8 @@ def plot_result(depth_est, depth_gt):
 
 
 def usage():
-    print("usage: python main.py demo_name(sphere or bunny) projection_model(-o or -p)")
+    print("Orthographic example: python main.py -o normal.npy mask_normal.npy depth.npy mask_depth.npy camera.ini")
+    print("Projective example: python main.py -o normal.npy mask_normal.npy depth.npy mask_depth.npy camera.ini")
 
 
 def erode_mask(mask):
@@ -188,6 +189,7 @@ def read_camera(path):
 
 if __name__ == '__main__':
 
+<<<<<<< HEAD
     n = np.load("data/sphere/normal.npy")
     n_mask = np.load("data/sphere/normal_mask.npy")
     n[..., 2][~n_mask] = -1
@@ -213,6 +215,22 @@ if __name__ == '__main__':
         plt.axis('off')
         plt.colorbar()
         plt.show()
+=======
+    if sys.argv[1] == "-o":
+        if sys.argv[1] == "bunny":
+            orthographic_bunny()
+        elif sys.argv[1] == "sphere":
+            orthographic_sphere()
+        else:
+            usage()
+    elif sys.argv[1] == "-p":
+        if sys.argv[1] == "bunny":
+            perspective_bunny()
+        elif sys.argv[1] == "sphere":
+            perspective_sphere()
+        else:
+            usage()
+>>>>>>> a2cb49f48ae2c8f24854582a6280b242e8af46fd
     else:
         # perspective camera
         fx = camera[0, 0]
