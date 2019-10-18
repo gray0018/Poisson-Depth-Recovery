@@ -31,13 +31,24 @@ Euler-Lagrange equation for this functional is a Poisson equation:
 
 
 ## How to use?
-Download this package and run the main.py:
+Clone the repository and run the main.py:
 ```
-python main.py demo_name(sphere or bunny) projection_model(-o or -p)
+python main.py data/bunny-orthographic
+python main.py data/sphere-orthographic
+python main.py data/sphere-perspective
 ```
-The Poisson solver is in `./lib/poisson.py`. If you want to use your own data, you should normalize your normal map
-into <img src="http://latex.codecogs.com/gif.latex?(p, q, -1)"/> form. The normal map's coordinate should align with 
-the normal map in the README.
+If you want to use your own data, please create a directory, and put your own data inside:
+```
+├── your-own-data-directory
+    ├── camera.ini
+    ├── depth_mask.npy
+    ├── depth.npy
+    ├── normal_mask.npy
+    └── normal.npy
+```
+
+
+The normal map's coordinate should align with the normal map in the README.
 
 ## Dependencies
 
