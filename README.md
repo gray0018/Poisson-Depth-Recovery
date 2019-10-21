@@ -46,9 +46,17 @@ If you want to use your own data, please create a directory, and put your own da
     ├── normal_mask.npy
     └── normal.npy
 ```
+### camera.ini
+Camera matrix, a 3*4 matrix. You may check `./data/sphere-perspective/camera.ini` for perspective camera demo, `./data/sphere-orthographic/camera.ini` for orthographic camera demo.
+<p align="center">
+<img src="pic/camera.png" width="512">
+</p>
 
-
-The normal map's coordinate should align with the normal map in the README.
+### normal.npy
+  - Each normal should be unit length, and z component should be less than 0. Coordinate should be align with the below one.
+<p align="center">
+<img src="pic/normal_map_coordinate.png" width="334">
+</p>
 
 ## Dependencies
 
