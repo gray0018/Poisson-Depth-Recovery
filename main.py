@@ -23,6 +23,7 @@ class PoissonOperator(object):
 
         self.depth = np.zeros([h, w])
 
+        # center, left, down, up, right
         self.f_4neighbor = lambda x: np.array([x[1, 1], x[1, 0], x[2, 1], x[0, 1], x[1, 2]])
 
         # add depth_info and depth_weight for depth fusion
@@ -73,30 +74,31 @@ class PoissonOperator(object):
         colvals = []
         bvals = 0
 
-        if mask_used[1] == 1:
-            D_ct = - (data_used[0] + data_used[1])[0] / 2 # the val between center to top
+
+        if mask_used[1] == 1: # left
+            D_ct = (data_used[0] + data_used[1])[0] / 2
             colidx.append(position_used[1])
-            colvals.append(1)
+            colvals.append(-1)
             bvals += D_ct
-        if mask_used[2] == 1:
-            D_cl = - (data_used[0] + data_used[2])[1] / 2# the val between center to left
+        if mask_used[2] == 1: # down
+            D_cl = (data_used[0] + data_used[2])[1] / 2
             colidx.append(position_used[2])
-            colvals.append(1)
+            colvals.append(-1)
             bvals += D_cl
-        if mask_used[3] == 1:
-            D_cr = (data_used[0] + data_used[3])[1] / 2 # the val between center to right
+        if mask_used[3] == 1: # up
+            D_cr = (data_used[0] + data_used[3])[1] / 2
             colidx.append(position_used[3])
             colvals.append(1)
             bvals += D_cr
-        if mask_used[4] == 1:
-            D_cb = (data_used[0] + data_used[4])[0] / 2 # the val between center to bottom
+        if mask_used[4] == 1: # right
+            D_cb = (data_used[0] + data_used[4])[0] / 2
             colidx.append(position_used[4])
             colvals.append(1)
             bvals += D_cb
 
 
         colidx.append(position_used[0])
-        colvals.append(- np.sum(np.array(colvals)))
+        colvals.append(0)
 
         return [colidx, colvals, bvals]
 
