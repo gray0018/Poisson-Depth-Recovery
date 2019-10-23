@@ -76,29 +76,28 @@ class PoissonOperator(object):
 
 
         if mask_used[1] == 1: # left
-            D_ct = (data_used[0] + data_used[1])[0] / 2
+            D_ct = (data_used[0]+data_used[1])[0]/2
             colidx.append(position_used[1])
             colvals.append(-1)
             bvals += D_ct
         if mask_used[2] == 1: # down
-            D_cl = (data_used[0] + data_used[2])[1] / 2
+            D_cl = (data_used[0]+data_used[2])[1]/2
             colidx.append(position_used[2])
             colvals.append(-1)
             bvals += D_cl
         if mask_used[3] == 1: # up
-            D_cr = (data_used[0] + data_used[3])[1] / 2
+            D_cr = (data_used[0]+data_used[3])[1]/2
             colidx.append(position_used[3])
             colvals.append(1)
             bvals += D_cr
         if mask_used[4] == 1: # right
-            D_cb = (data_used[0] + data_used[4])[0] / 2
+            D_cb = (data_used[0]+data_used[4])[0]/2
             colidx.append(position_used[4])
             colvals.append(1)
             bvals += D_cb
 
-
+        colvals.append(- np.sum(np.array(colvals)))
         colidx.append(position_used[0])
-        colvals.append(0)
 
         return [colidx, colvals, bvals]
 
